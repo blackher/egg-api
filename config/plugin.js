@@ -16,7 +16,13 @@ exports.redis = {
   enable: true,
   package: 'egg-redis',
 };
+//session
 exports.sessionRedis = {
   enable: true,
   package: 'egg-session-redis',
 };
+//orm
+exports.sequelize = {
+  enable: true,
+  package: 'egg-sequelize'
+}

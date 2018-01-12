@@ -19,7 +19,7 @@ class UserController extends Controller {
     // 如果参数校验未通过，将会抛出一个 status = 422 的异常
     ctx.validate(createRule);
     // 调用 service 创建一个 active 活动
-    const res = await ctx.service.active.create(ctx.request.body);
+    const res = await ctx.wx.active.create(ctx.request.body);
     // 设置响应体和状态码
     ctx.body = {
       topic_id: res.insertId,

@@ -33,8 +33,16 @@ exports.weappSDK = {
 };
 //设置session
 exports.sessionRedis = {
-  name:""
   // maxAge: 24 * 3600 * 1000, // 1 天
   // httpOnly: true,
   // encrypt: false,
+};
+
+exports.sequelize = {
+  dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+  database: 'egg-test',
+  host: '127.0.0.1',
+  port: '3306',
+  username: 'root',
+  password: '123456',
 };

@@ -7,13 +7,15 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_154787887_12321';
 
   // add your config here
-  config.middleware = ['errorHandler'];
+  config.middleware = ['errorHandler','checkLogin'];
 
   
   (config.errorHandler = {
   	match:"/api"
   });
-
+  (config.checkLogin = {
+    ignore:"/login"
+  });
   config.security = {
   	csrf:{
   		ignore:'/api',
