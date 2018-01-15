@@ -15,28 +15,32 @@ class loginController extends Controller {
     //没有登陆的情况下
 
     if(ctx.session === undefined){
-    	//校验是否带有参数
-    	// ctx.validate(createRule);
+    	校验是否带有参数
+    	ctx.validate(createRule);
 
-    	// const code = ctx.body.code;
+    	const code = ctx.body.code;
     	
-    	// //登陆获取用的openid sessionid
+    	//登陆获取用的openid sessionid
 
-    	// const res = await ctx.service.jscode2session.getSessionKey(code);
-    	// const users = await  ctx.model.User.findOrCreate({
-    	// 	where:{
-    	// 		'openid':res.openid,
+    	const res = await ctx.service.jscode2session.getSessionKey(code);
+    	const result = await  ctx.model.User.findOrCreate({
+    		where:{
+    			'openid':res.openid,
 
-    	// 	},
-    	// 	defaults:{
-    	// 		'openid':res.openid,
-    	// 	}
+    		},
+    		defaults:{
+    			'openid':res.openid,
+    		}
 
-    	// })
+    	})
+        const userInfo = await ctx.model.User.find({
+            where:{
+                'openid':res.openid
+            }
+        })
     	//记录到session
-    	//ctx.session.user = {"user_id":12311};
+    	ctx.session.user = JSON.stringify(userInfo);
     }
-    ctx.session.user = JSON.stringify({user_id:12311});
     ctx.body = {
       message:ctx.session.user
     };
