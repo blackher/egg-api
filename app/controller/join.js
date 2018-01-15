@@ -13,31 +13,31 @@ class JoinController extends Controller {
     ctx.validate(createRule);
     const activeInfo = await ctx.model.Join.findOne(ctx.params.id);
     //限制人数 活动
-    if(activeInfo.user_limit >0 && activeInfo.max_user_num =>activeInfo.user_attend_num){
-      ctx.body = {
-        message:"active num is enough"
-      }
-      ctx.status = 405;
-    }else{
+    // if(activeInfo.user_limit >0 && activeInfo.max_user_num =>activeInfo.user_attend_num){
+    //   ctx.body = {
+    //     message:"active num is enough"
+    //   }
+    //   ctx.status = 405;
+    // }else{
     // 调用 service 创建一个 join 活动
-      const param = Object.assign(
-        {},
-        ctx.request.body,
-        {'join_user_id':JSON.parse(ctx.session.user).user_id},
-        {'active_user_id':activeInfo.user_id},
-        {'user_max_num':activeInfo.user_max_num}
-        );
-      const res = ctx.service.join.create(param);
+      // const param = Object.assign(
+      //   {},
+      //   ctx.request.body,
+      //   {'join_user_id':JSON.parse(ctx.session.user).user_id},
+      //   {'active_user_id':JSON.parse(activeInfo).user_id},
+      //   {'user_max_num':JSON.parse(activeInfo).user_max_num}
+      //   );
+      // const res = ctx.service.join.create(param);
 
 
-      //const res = ctx.service.
-      // 设置响应体和状态码
-      ctx.body = {
-        topic_id: res.insertId,
-        message:"success"
-      };
+      // //const res = ctx.service.
+      // // 设置响应体和状态码
+      // ctx.body = {
+      //   topic_id: res.insertId,
+      //   message:"success"
+      // };
       ctx.status = 201;
-  }
+  //}
 
   }
   

@@ -18,7 +18,7 @@ module.exports = appInfo => {
   });
   config.security = {
   	csrf:{
-  		ignore:'/api',
+  		ignore:['/api','/'],
   	}
   };
 
