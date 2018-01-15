@@ -6,7 +6,7 @@ const Controller = require('egg').Controller;
 
 const createRule = {
 	//用户code参数
-  	: {type:'string',required:true}//
+  	
 };
 
 
@@ -28,12 +28,17 @@ class UserController extends Controller {
   			'country'  :  ctx.body.country,
   		},
   		where:{
-    		'openid'   :  ctx.body.openid,
+    		'openid'   :  ctx.session.user.openid,
     	}
     		
   	})
+  	const userInfo = await ctx.model.User.findOne({
+  		where: {
+  			'openid':  ctx.session.user.openid
+  		}
+  	})
   	ctx.body = user;
-
+  	ctx.session.user = Object.assign({},ctx.session.user,{'user_id':userInfo.id});
   }
 }
 

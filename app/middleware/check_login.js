@@ -3,7 +3,8 @@
 //检测用户是否登陆中间件
 module.exports = () => {
   return async function checkLogin(ctx, next) {
-      if(ctx.seesion ===undefined ){
+     
+      if(ctx.session ===undefined ){
         
         const status =  411;
       

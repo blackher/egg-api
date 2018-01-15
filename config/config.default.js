@@ -14,7 +14,7 @@ module.exports = appInfo => {
   	match:"/api"
   });
   (config.checkLogin = {
-    ignore:"/login"
+    ignore:"/api/v1/login"
   });
   config.security = {
   	csrf:{

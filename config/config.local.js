@@ -33,9 +33,9 @@ exports.weappSDK = {
 };
 //设置session
 exports.sessionRedis = {
-  // maxAge: 24 * 3600 * 1000, // 1 天
-  // httpOnly: true,
-  // encrypt: false,
+   maxAge: 24 * 3600 * 1000, // 1 天
+   httpOnly: true,
+   encrypt: false,
 };
 
 exports.sequelize = {
