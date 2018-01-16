@@ -1,7 +1,7 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Join = app.model.define('join', {
+  const Join = app.model.define('joins', {
     id: {
       type: INTEGER,
       autoIncrement:true,

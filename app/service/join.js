@@ -4,37 +4,25 @@ const Service = require('egg').Service;//
 
 class JoinService extends Service {
   async create(params) {
+  
+    const app = this.app;
+    const ctx = this.ctx;
     
+     await app.model.transaction((t) => {
+    
+      return  app.model.Join.create({
+          active_user_id    :  params.active_user_id,
+          join_user_id    :  params.join_user_id
+        },{transaction:t}).then(()=>{
+            return app.model.Active.update({'user_max_num':params.user_max_num},{
+              where:{'id':params.id},
+              transaction:t
+        }).then((res)=>{
 
-    //todo
-    /*
-
-  使用Sequelize 封装  但是不知道为什么ctx 全局参数传递
-    */
-    const conn = await this.app.mysql.beginTransaction();
-
-    try {
-        await conn.insert('joins', {
-
-            active_user_id    :  123,
-
-             join_user_id    :  123
-
-              });  // 第一步操作
-        await conn.update('actives',{
-            'user_max_num' :  2,
-            'id'   :  1,
-        
-      });
-        
-        await conn.commit(); // 提交事务  
-    } catch (err) {
-  // error, rollback
-      await conn.rollback(); // 一定记得捕获异常后回滚事务！！
-      throw err;
-    }
-
-
+        });
+      
+    })
+    })    
 
   }
 }

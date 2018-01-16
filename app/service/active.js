@@ -18,7 +18,7 @@ class ActiveService extends Service {
   	const ctx = this.ctx;
   	const res = await ctx.model.Active.update({
 
-  		vaule:{
+  		value:{
   			'user_max_num' :  params.user_max_num+1,
   			
   		},
