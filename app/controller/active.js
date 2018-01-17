@@ -8,8 +8,8 @@ const createRule = {
 
   descript: {type:'string',required:true},
   content: {type:'string',required:true},
-  start_at   :  params.start_at,
-  end_at     :  params.end_at,
+  start_at   :  {type:'string',required:true},
+  end_at     :  {type:'string',required:true},
 };
 
 
