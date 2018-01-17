@@ -23,6 +23,7 @@ class loginController extends Controller {
     	//登陆获取用的openid sessionid
 
     	const res = await ctx.service.jscode2session.getSessionKey(code);
+        
     	const result = await  ctx.model.User.findOrCreate({
     		where:{
     			'openid':res.openid,

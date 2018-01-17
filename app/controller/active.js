@@ -4,10 +4,13 @@ const Controller = require('egg').Controller;
 
 // 定义创建接口的请求参数规则
 
-// const createRule = {
-//   title: {type:'string',required:true},
-//   content: 'string',
-// };
+const createRule = {
+
+  descript: {type:'string',required:true},
+  content: {type:'string',required:true},
+  start_at   :  params.start_at,
+  end_at     :  params.end_at,
+};
 
 
 class ActiveController extends Controller {

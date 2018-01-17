@@ -18,7 +18,8 @@ class JoinService extends Service {
               where:{'id':params.id},
               transaction:t
         }).then((res)=>{
-
+            //has been commit 
+            
         });
       
     })

@@ -9,6 +9,7 @@ module.exports = app => {
   router.post('/api/v1/login', controller.login.index);
   router.resources('user','/api/v1/user/:id', controller.user);
   router.resources('active', '/api/v1/active', controller.active);
+  router.resources('join', '/api/v1/join/:id', controller.join);
 };
 
 
