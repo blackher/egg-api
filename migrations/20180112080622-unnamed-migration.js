@@ -20,8 +20,9 @@ module.exports = {
       province:{type:STRING,allowNull:false},
       city:{type:STRING,allowNull:false},
       country:{type:STRING,allowNull:false},
-      created_at: DATE,
-      updated_at: DATE,
+      createdAt: DATE,
+      updatedAt: DATE,
+      deletedAt:DATE
     });
 
     //await queryInterface.addIndex('users', ['email'], { indicesType: 'UNIQUE' });
