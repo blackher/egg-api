@@ -13,13 +13,13 @@ module.exports = {
 
     await queryInterface.createTable('users', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      openid: { type: STRING, allowNull: false },
-      nickName:{type:STRING,allowNull: false},
-      avatarUrl:{type:STRING,allowNull:false},
-      gender:{type:INTEGER,allowNull:false},//性别 0：未知、1：男、2：女
-      province:{type:STRING,allowNull:false},
-      city:{type:STRING,allowNull:false},
-      country:{type:STRING,allowNull:false},
+      openid: { type: STRING },
+      nickName:{type:STRING},
+      avatarUrl:{type:STRING},
+      gender:{type:INTEGER},//性别 0：未知、1：男、2：女
+      province:{type:STRING},
+      city:{type:STRING},
+      country:{type:STRING},
       createdAt: DATE,
       updatedAt: DATE,
       deletedAt:DATE
