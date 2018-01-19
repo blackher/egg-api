@@ -18,18 +18,18 @@ class Jscode2sessionService extends Service{
 
 	async  getSessionKey(jscode){
 		try{
-			const requestUrl =this. _buildUrl(jscode);
+			const requestUrl =this._buildUrl(jscode);
 			const response = await  this.ctx.curl(requestUrl,{
 			 		dataType:'json'
 			 	})
 			
 			if(response.data.errcode){
-				throw new Error(response.data.errmsg)
+				this.ctx.throw(401, response.data.errmsg);
 			}
 			return response.data;
 		}catch(err){
-			this.logger.error(err);
-			throw new Error(err);
+			
+			this.ctx.throw(401, err);
 		}
 
 	}
