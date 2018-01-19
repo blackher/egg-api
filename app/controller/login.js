@@ -39,24 +39,23 @@ class loginController extends Controller {
                         'openid':res.openid
                     }
                 })
-            }catch(err){
-
-                this.ctx.throw(401, err);
-            }
+            
         	//记录到session
         	ctx.session.user = JSON.stringify(userInfo);
         }
         ctx.body = {
           message:ctx.session.user
         };
-        ctx.status = 201;
-        }
 
+        ctx.status = 201;
+
+        
     }catch(err){
 
             this.ctx.throw(401, err);
     }
-  }
+}
+  
 }
 
 
