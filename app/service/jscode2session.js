@@ -3,14 +3,6 @@
 const WXBizDataCrypt = require('./WXBizDataCrypt');
 const Service = require('egg').Service;//
 
-const _buildUrl = jscode => {
-  const apiUrl = 'https://api.weixin.qq.com/sns/jscode2session';
-  const appId = 'wxc8cf72438924f1bc';
-  const appSecret = 'dc2920d924e05471e47e266f231e9365';
-  const params = `?appid=${appId}&secret=${appSecret}&js_code=${jscode}&grant_type=authorization_code`;
-  return `${apiUrl}${params}`;
-};
-
 
 // 获取解密SessionKey
 
@@ -18,16 +10,15 @@ class Jscode2sessionService extends Service{
 
 	_buildUrl(jscode)  {
   		const apiUrl = 'https://api.weixin.qq.com/sns/jscode2session';
-  		const appId = 'wxc8cf72438924f1bc';
-  		const appSecret = 'dc2920d924e05471e47e266f231e9365';
+  		const appId = this.config.weappSDK.appId;
+  		const appSecret = this.config.weappSDK.appSecret;
   		const params = `?appid=${appId}&secret=${appSecret}&js_code=${jscode}&grant_type=authorization_code`;
   		return `${apiUrl}${params}`;
 	}
 
 	async  getSessionKey(jscode){
 		try{
-			const requestUrl = _buildUrl(jscode);
-
+			const requestUrl =this. _buildUrl(jscode);
 			const response = await  this.ctx.curl(requestUrl,{
 			 		dataType:'json'
 			 	})

@@ -28,8 +28,8 @@ exports.redis = {
 };
 //小程序appId  key
 exports.weappSDK = {
-    appId: '',
-    appSecret: '',
+    appId: 'wxadae2bebcd52fe10',
+    appSecret: '374c3034429779a7ccaea4757714c874',
 };
 //设置session
 exports.sessionRedis = {

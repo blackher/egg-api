@@ -13,7 +13,6 @@ class loginController extends Controller {
   async index() {
     const ctx = this.ctx;
     //没有登陆的情况下
-
     if(ctx.session === undefined || JSON.stringify(ctx.session) == "{}" ){
     	//校验是否带有参数
     	ctx.validate(createRule);
