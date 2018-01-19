@@ -8,9 +8,9 @@ exports.mysql = {
     // 用户名
     user: 'root',
     // 密码
-    password: 'Zd!=Shihe1990',
+    password: '123456',
     // 数据库名
-    database: 'api',
+    database: 'egg-test',
   },
   // 是否加载到 app 上，默认开启
   app: true,
@@ -19,7 +19,7 @@ exports.mysql = {
 };
 exports.redis = {
   client: {
-    host: '127.0.0.1',
+    host: '192.168.11.98',
     port: '6379',
     password: '',
     db: '0',
@@ -28,8 +28,8 @@ exports.redis = {
 };
 //小程序appId  key
 exports.weappSDK = {
-    appId: 'wxc8cf72438924f1bc',
-    appSecret: 'dc2920d924e05471e47e266f231e9365',
+    appId: '',
+    appSecret: '',
 };
 //设置session
 exports.sessionRedis = {
@@ -40,10 +40,10 @@ exports.sessionRedis = {
 
 exports.sequelize = {
   dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
-  database: 'api',
+  database: 'egg-test',
   host: '127.0.0.1',
   port: '3306',
   username: 'root',
-  password: 'Zd!=Shihe1990',
+  password: '123456',
   operatorsAliases:false,
 };

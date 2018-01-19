@@ -14,11 +14,11 @@ class loginController extends Controller {
     const ctx = this.ctx;
     //没有登陆的情况下
 
-    if(ctx.session === undefined){
-    	校验是否带有参数
+    if(ctx.session === undefined || JSON.stringify(ctx.session) == "{}" ){
+    	//校验是否带有参数
     	ctx.validate(createRule);
 
-    	const code = ctx.body.code;
+    	const code = ctx.request.body.code;
     	
     	//登陆获取用的openid sessionid
 
