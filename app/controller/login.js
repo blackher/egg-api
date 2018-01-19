@@ -22,22 +22,26 @@ class loginController extends Controller {
     	//登陆获取用的openid sessionid
 
     	const res = await ctx.service.jscode2session.getSessionKey(code);
-        
-    	const result = await  ctx.model.User.findOrCreate({
-    		where:{
-    			'openid':res.openid,
+        try{
+        	const result = await  ctx.model.User.findOrCreate({
+        		where:{
+        			'openid':res.openid,
 
-    		},
-    		defaults:{
-    			'openid':res.openid,
-    		}
+        		},
+        		defaults:{
+        			'openid':res.openid,
+        		}
 
-    	})
-        const userInfo = await ctx.model.User.find({
-            where:{
-                'openid':res.openid
-            }
-        })
+        	})
+            const userInfo = await ctx.model.User.find({
+                where:{
+                    'openid':res.openid
+                }
+            })
+        }catch(err){
+
+            this.ctx.throw(401, err);
+        }
     	//记录到session
     	ctx.session.user = JSON.stringify(userInfo);
     }
